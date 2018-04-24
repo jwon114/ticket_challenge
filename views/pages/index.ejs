@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <main>
+      <% tickets.forEach(ticket => { %>
+        <div>
+          <h5>Ticket ID: <%= ticket.id %></h5>
+          <p>Subject: <%= ticket.subject %></p>
+        </div>
+      <% }) %>
+    </main>
+  </body>
+</html>
