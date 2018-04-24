@@ -25,11 +25,24 @@ function fetchData(url) {
   )
 }
 
+app.get('/tickets/:id', function(req, res) {
+  fetchData(showTicket(req.params.id))
+  .then(data => {
+    res.render('pages/ticket', { ticketDetails: data.ticket, pageId })
+  })
+});
+
 app.get('/tickets', function(req, res) {
-  fetchData(pageTickets(1))
+  req.query.page ? pageId = req.query.page : pageId = 1;
+  fetchData(pageTickets(pageId))
   .then(data => {
     res.render('pages/index', { tickets: data.tickets });
   })
+});
+
+// redirect root to the first page of search
+app.get('/', function(req, res) {
+  res.redirect('/tickets?page=1');
 });
 
 app.listen(PORT, function() {
