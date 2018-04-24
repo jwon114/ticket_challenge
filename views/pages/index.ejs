@@ -4,12 +4,42 @@
   </head>
   <body>
     <main>
-      <% tickets.forEach(ticket => { %>
-        <div>
-          <h5>Ticket ID: <%= ticket.id %></h5>
-          <p>Subject: <%= ticket.subject %></p>
+      <div class="container">
+        <h1 class="index-header">Ticket Viewer</h1>
+        <div class="ticket-info">
+          <span class="total-tickets">Total Tickets: <%= totalTickets %></span>
+          <span class="tickets-per-page">Tickets on this Page: <%= tickets.length %></span>
         </div>
-      <% }) %>
+      </div>
+      <div class="container main-content">
+        <% tickets.forEach(ticket => { %>
+          <a class="ticket-link" href="/tickets/<%= ticket.id %>">
+            <div class="section hoverable">
+              <h5>Ticket ID: <%= ticket.id %></h5>
+              <p>Subject: <%= ticket.subject %></p>
+            </div>
+          </a>
+        <% }) %>
+        <ul class="pagination">
+          <% if (prevPageId !== null) { %>
+            <li class="waves-effect"><a href="/tickets?page=<%= prevPageId %>"><i class="material-icons">chevron_left</i></a></li>
+          <% } else { %>
+            <li class="disabled"><i class="material-icons">chevron_left</i></li>
+          <% } %>
+          <% totalPages.forEach(page => { %>
+            <% if (page == pageId) { %>
+              <li class="active"><a href="/tickets?page=<%= pageId %>"><%= pageId %></a></li>
+            <% } else { %>
+              <li class="waves-effect"><a href="/tickets?page=<%= page %>"><%= page %></a></li>
+            <% } %>
+          <% }) %>
+          <% if (nextPageId !== null) { %>
+            <li class="waves-effect"><a href="/tickets?page=<%= nextPageId %>"><i class="material-icons">chevron_right</i></a></li>
+          <% } else { %>
+            <li class="disabled"><i class="material-icons">chevron_right</i></li>
+          <% } %>
+        </ul>
+      </div>
     </main>
   </body>
 </html>
