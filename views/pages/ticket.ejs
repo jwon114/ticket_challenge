@@ -6,6 +6,16 @@
   <body>
     <div>
       <a href="/tickets?page=<%= pageId %>">Back to Index</a>
+      <div>
+        <h3 class="ticket-subject">Subject:</h3>
+        <h3><%= ticketDetails.subject %></h3>
+      </div>
+      <div>
+        <h5 class="ticket-id">Ticket ID:</h5>
+        <h5><%= ticketDetails.id %></h5>
+      </div>
+      <h4>Description</h4>
+      <p class="ticket-description"><%= ticketDetails.description %></p>
     </div>
   </body>
 </html>

@@ -5,7 +5,9 @@ var app = express();
 const PORT = 8080;
 const ticketsPerPage = 25;
 const baseURL = 'https://purpleduck.zendesk.com';
+// functions for building API URL endpoints
 const pageTickets = (pageId) => `${baseURL}/api/v2/tickets.json?page=${pageId}&per_page=${ticketsPerPage}`;
+const showTicket = (id) => `${baseURL}/api/v2/tickets/${id}.json`;
 var pageId;
 
 // node settings and static content
