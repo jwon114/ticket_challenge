@@ -51,13 +51,13 @@ Use a back-end technology to connect to the ticket server API and pull the data 
 ### Screenshots
 
 Index View
-![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/index_view.png "All Tickets Index View")
+![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/index.png "All Tickets Index View")
 
 Single Ticket View
-![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/single_ticket_view.png "Single Ticket View")
+![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/single_ticket.png "Single Ticket View")
 
 Pagination
 ![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/pagination.png "Pagination")
 
 Error Page
-![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/error_view.png "Page Error View")
+![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/error.png "Page Error View")

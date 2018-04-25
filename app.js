@@ -33,6 +33,7 @@ function calculatePages(total, perPage) {
   }
 }
 
+// single ticket view
 app.get('/tickets/:id', function(req, res) {
   var ticketDetails;
   fetchData(showTicket(req.params.id))
@@ -51,6 +52,7 @@ app.get('/tickets/:id', function(req, res) {
   })
 });
 
+// all tickets with pagination
 app.get('/tickets', function(req, res) {
   req.query.page ? pageId = req.query.page : pageId = 1;
   fetchData(pageTickets(pageId))
