@@ -39,11 +39,10 @@ Use a back-end technology to connect to the ticket server API and pull the data 
   npm install
   ```
 
-2. Start the server 
+2. Start the server and go to http://localhost:8080/
   ```
   npm start
   ```
-  Browse to http://localhost:8080/
 
 3. Run tests
   ```
