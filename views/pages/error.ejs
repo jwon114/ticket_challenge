@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang=”en”>
+  <head>
+    <link rel="stylesheet" href="/public/css/error.css">
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <header>
+      <% include ../partials/header %>
+    </header>
+    <main>
+      <div class="container">
+        <a class="waves-effect waves-light btn back-to-index" href="/tickets?page=1">Back to Index</a>
+        <h2 class="error-header">Error!</h2>
+        <h3><%= error %></h3>
+      </div>
+    </main>
+  </body>
+</html>  

@@ -1,0 +1,12 @@
+body {
+  background-color: #bfe6f4;
+}
+
+.back-to-index {
+  margin: 2.1rem 0 1.68rem 0;
+  background-color: #30aabc !important;
+}
+
+.error-header {
+  color: #ee6d72;
+}

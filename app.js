@@ -61,13 +61,16 @@ app.get('/tickets', function(req, res) {
   req.query.page ? pageId = req.query.page : pageId = 1;
   fetchData(pageTickets(pageId))
   .then(data => {
+    // handle if there is an error returned
+    if (data.error) res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
+
     if (data.tickets.length !== 0) {
       var totalTickets = data.count;
       var totalPages = calculatePages(totalTickets, ticketsPerPage);
       var [prevPageId, nextPageId] = paginationIds(data.previous_page, data.next_page, pageId);
       res.render('pages/index', { tickets: data.tickets, totalPages, pageId, prevPageId, nextPageId, totalTickets });
     } else {
-
+      res.render('pages/error', { error: 'No Tickets Here' })
     }
   })
 });
