@@ -14,6 +14,7 @@ var pageId;
 // functions for building API URL endpoints
 const pageTickets = (pageId) => `${baseURL}/api/v2/tickets.json?page=${pageId}&per_page=${ticketsPerPage}`;
 const showTicket = (id) => `${baseURL}/api/v2/tickets/${id}.json`;
+const getUser = (id) => `${baseURL}/api/v2/users/${id}.json`;
 
 // node settings and static content
 app.set('views', './views');
@@ -51,11 +52,20 @@ function paginationIds(prevPage, nextPage, pageId) {
 }
 
 app.get('/tickets/:id', function(req, res) {
+  var ticketDetails;
   fetchData(showTicket(req.params.id))
   .then(data => {
-    if (data.error) res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
-    
-    res.render('pages/ticket', { ticketDetails: data.ticket, pageId })
+    // handle if there is an error returned
+    if (data.error) {
+      res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
+    }
+
+    ticketDetails = data.ticket;
+    // get the requester details
+    fetchData(getUser(data.ticket.requester_id))
+    .then(data => {
+      res.render('pages/ticket', { ticketDetails, pageId, requester: data.user.name })
+    })
   })
 });
 
@@ -64,16 +74,20 @@ app.get('/tickets', function(req, res) {
   fetchData(pageTickets(pageId))
   .then(data => {
     // handle if there is an error returned
-    if (data.error) res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
+    if (data.error) {
+      res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
+    }
 
-    if (data.tickets.length !== 0) {
-      var totalTickets = data.count;
-      var totalPages = calculatePages(totalTickets, ticketsPerPage);
-      var [prevPageId, nextPageId] = paginationIds(data.previous_page, data.next_page, pageId);
-      res.render('pages/index', { tickets: data.tickets, totalPages, pageId, prevPageId, nextPageId, totalTickets });
-    } else {
+    // if no tickets
+    if (data.tickets.length === 0) {
       res.render('pages/error', { error: 'No Tickets Here' })
     }
+
+    // if there are tickets to view
+    var totalTickets = data.count;
+    var totalPages = calculatePages(totalTickets, ticketsPerPage);
+    var [prevPageId, nextPageId] = paginationIds(data.previous_page, data.next_page, pageId);
+    res.render('pages/index', { tickets: data.tickets, totalPages, pageId, prevPageId, nextPageId, totalTickets });
   })
 });
 
