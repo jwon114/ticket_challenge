@@ -29,6 +29,7 @@ Use a back-end technology to connect to the ticket server API and pull the data 
 ### Testing
 * Mocha
 * Chai
+* Chai-http
 
 ## Usage
 
