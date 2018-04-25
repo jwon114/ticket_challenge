@@ -53,6 +53,8 @@ function paginationIds(prevPage, nextPage, pageId) {
 app.get('/tickets/:id', function(req, res) {
   fetchData(showTicket(req.params.id))
   .then(data => {
+    if (data.error) res.render('pages/error', { error: data.error.split(/(?=[A-Z])/).join(" ") })
+    
     res.render('pages/ticket', { ticketDetails: data.ticket, pageId })
   })
 });

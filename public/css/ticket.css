@@ -1,0 +1,23 @@
+html {
+  background-color: #bfe6f4;
+}
+
+.back-to-index {
+  margin: 2.1rem 0 1.68rem 0;
+  background-color: #30aabc !important;
+}
+
+.datetime-container {
+  color: #fff;
+  margin-bottom: 0;
+  background-color: #30aabc;
+}
+
+.ticket-description {
+  font-size: 18px;
+}
+
+.ticket-subject {
+  text-decoration: underline;
+  text-decoration-color: #30aabc;
+}
