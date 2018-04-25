@@ -2,6 +2,8 @@ var express = require('express');
 var fetch = require('node-fetch');
 var _ = require('lodash');
 var app = express();
+// import API fetch function
+var fetchData = require('./libs/fetchData');
 
 // globals
 const PORT = 8080;
@@ -21,19 +23,6 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/public', express.static(__dirname + '/node_modules/materialize-css/dist/'));
-
-function fetchData(url) {
-  return (
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Basic ' + Buffer.from(username + ':' + password).toString('base64'),
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-  )
-}
 
 function calculatePages(total, perPage) {
   if (total % perPage === 0) {
