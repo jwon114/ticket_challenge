@@ -27,9 +27,9 @@
         <% }) %>
         <ul class="pagination">
           <% if (prevPageId !== null) { %>
-            <li class="waves-effect"><a href="/tickets?page=<%= prevPageId %>"><i class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect"><a href="/tickets?page=<%= parseInt(pageId) - 1 %>"><i class="material-icons">chevron_left</i></a></li>
           <% } else { %>
-            <li class="disabled"><i class="material-icons">chevron_left</i></li>
+            <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
           <% } %>
           <% totalPages.forEach(page => { %>
             <% if (page == pageId) { %>
@@ -39,9 +39,9 @@
             <% } %>
           <% }) %>
           <% if (nextPageId !== null) { %>
-            <li class="waves-effect"><a href="/tickets?page=<%= nextPageId %>"><i class="material-icons">chevron_right</i></a></li>
+            <li class="waves-effect"><a href="/tickets?page=<%= parseInt(pageId) + 1 %>"><i class="material-icons">chevron_right</i></a></li>
           <% } else { %>
-            <li class="disabled"><i class="material-icons">chevron_right</i></li>
+            <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
           <% } %>
         </ul>
       </div>
