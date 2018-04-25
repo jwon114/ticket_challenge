@@ -7,6 +7,8 @@ var app = express();
 const PORT = 8080;
 const ticketsPerPage = 25;
 const baseURL = 'https://purpleduck.zendesk.com';
+const username = 'jthgwong@gmail.com' + '/token';
+const password = 'bWZ7jgNslo3rZOb5gEd0Pk0doL5tKLZ04VNB5UvU';
 var pageId;
 
 // functions for building API URL endpoints
@@ -33,10 +35,10 @@ function fetchData(url) {
 }
 
 function calculatePages(total, perPage) {
-  if (totalTickets % ticketsPerPage === 0) {
-    return _.range(1, (totalTickets / ticketsPerPage) + 1);
+  if (total % perPage === 0) {
+    return _.range(1, (total / perPage) + 1);
   } else { 
-    return _.range(1, Math.floor(totalTickets / ticketsPerPage) + 2);
+    return _.range(1, Math.floor(total / perPage) + 2);
   }
 }
 

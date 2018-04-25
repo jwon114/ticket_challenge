@@ -1,0 +1,53 @@
+body {
+  background-color: #bfe6f4;
+}
+
+.index-header {
+  color: #ee6d72;
+}
+
+.ticket-info {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.ticket-info, .total-tickets {
+  color: #03363d;
+  font-size: 1.5rem;
+}
+
+.section {
+  padding-left: 1rem;
+  border: 2px solid #1c8a93;
+  margin-bottom: 4px;
+  transition: all .5s;
+}
+
+.section:hover {
+  background-color: #1c8a93;
+  transition: all .5s;
+}
+
+.ticket-link .section {
+  color: #1c8a93;
+  transition: all .5s;
+}
+
+.ticket-link:hover .section {
+  color: #fff;
+  transition: all .5s;
+}
+
+.pagination {
+  text-align: center;
+  padding: 30px;
+}
+
+.pagination li a {
+  font-size: 1.6rem !important;
+}
+
+ul:not(.browser-default) {
+  padding-left: 30px !important;
+}
