@@ -1,4 +1,4 @@
-# Ticket Challenge
+# Zendesk Ticket Challenge
 
 ## Functional Requirements
 
@@ -48,7 +48,7 @@ Use a back-end technology to connect to the ticket server API and pull the data 
   npm test
   ```
 
-### Screenshots
+## Screenshots
 
 Index View
 ![alt text](https://github.com/jwon114/ticket_challenge/raw/master/screenshots/index.png "All Tickets Index View")

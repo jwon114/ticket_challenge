@@ -50,6 +50,10 @@ app.get('/tickets/:id', function(req, res) {
       res.render('pages/ticket', { ticketDetails, pageId, requester: data.user.name })
     })
   })
+  .catch(err => {
+    // catch API fetch errors
+    res.render('pages/error', { error: 'Something went wrong, ' + err.status + ' ' + err.statusText })
+  })
 });
 
 // all tickets with pagination
@@ -71,6 +75,10 @@ app.get('/tickets', function(req, res) {
     var totalTickets = data.count;
     var totalPages = calculatePages(totalTickets, ticketsPerPage);
     res.render('pages/index', { tickets: data.tickets, totalPages, pageId, totalTickets, prevPageId: data.previous_page, nextPageId: data.next_page });
+  })
+  .catch(err => {
+    // catch API fetch errors
+    res.render('pages/error', { error: 'Something went wrong, ' + err.status + ' ' + err.statusText })
   })
 });
 
